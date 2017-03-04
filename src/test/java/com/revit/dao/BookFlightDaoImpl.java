@@ -38,5 +38,10 @@ public class BookFlightDaoImpl extends AbstractDao<BookFlight> implements BookFl
 		// TODO Auto-generated method stub
 		page.getBuyFlightButton().click();
 	}
+	
+	public void navi()
+	{
+		this.navigate();
+	}
 
 }

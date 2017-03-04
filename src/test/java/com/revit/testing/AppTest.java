@@ -15,10 +15,14 @@ import org.junit.FixMethodOrder;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.revit.pages.BookFlight;
-import com.revit.pages.FindFlight;
-import com.revit.pages.HomePage;
-import com.revit.pages.SelectFlight;
+import com.revit.pages.BookFlightService;
+import com.revit.pages.BookFlightServiceImpl;
+import com.revit.pages.FindFlightService;
+import com.revit.pages.FindFlightServiceImpl;
+import com.revit.pages.HomePageService;
+import com.revit.pages.HomePageServiceImpl;
+import com.revit.pages.SelectFlightService;
+import com.revit.pages.SelectFlightServiceImpl;
 
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
@@ -29,13 +33,20 @@ import org.junit.runners.MethodSorters;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class AppTest {
 	private static FirefoxDriver driver;
-	WebElement element;
+	static HomePageService lg;
+	static FindFlightService ff;
+	static SelectFlightService sf;
+	static BookFlightService bf;
+	
 
 	@BeforeClass
 	public static void openBrowser() {
 		driver = new FirefoxDriver();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		driver.get("http://newtours.demoaut.com/mercurywelcome.php");
+		lg = new HomePageServiceImpl(driver);
+		ff = new FindFlightServiceImpl(driver);
+		sf = new SelectFlightServiceImpl(driver);
+		bf = new BookFlightServiceImpl(driver);
 	}
 
 	/**
@@ -43,11 +54,9 @@ public class AppTest {
 	 */
 	@Test
 	public void stage_1_LoginTest() {
-		HomePage.driver = driver;
-		HomePage.enterUsername("mercury");
-		HomePage.enterPassword("mercury");
-		HomePage.login();
-		System.out.println(driver.getCurrentUrl());
+		lg.enterUsername("mercury");
+		lg.enterPassword("mercury");
+		lg.login();
 		if (!driver.getCurrentUrl().contains("http://newtours.demoaut.com/mercuryreservation.php"))
 			fail();
 	}
@@ -57,21 +66,18 @@ public class AppTest {
 	 */
 	@Test
 	public void stage_2_FindFlightTest() {
-
-		FindFlight.driver = driver;
-		FindFlight.selectOneway();
-		FindFlight.enterDeparting("Sydney");
-		FindFlight.enterArrival("London");
-		FindFlight.selectFirstClass();
-		FindFlight.findFlight();
+		ff.selectOneway();
+		ff.enterDeparting("Sydney");
+		ff.enterArrival("London");
+		ff.selectFirstClass();
+		ff.findFlight();
 		if (!driver.getCurrentUrl().contains("http://newtours.demoaut.com/mercuryreservation2.php"))
 			fail();
-		SelectFlight.driver = driver;
-		if (!SelectFlight.getFromPort().contains("Sydney"))
+		if (!sf.getFromPort().contains("Sydney"))
 			fail();
-		if (!SelectFlight.getToPort().contains("London"))
+		if (!sf.getToPort().contains("London"))
 			fail();
-		if (!SelectFlight.getServClass().contains("First"))
+		if (!sf.getServClass().contains("First"))
 			fail();
 	}
 
@@ -80,9 +86,7 @@ public class AppTest {
 	 */
 	@Test
 	public void stage_3_SelectFlightTest() {
-
-		SelectFlight.driver = driver;
-		SelectFlight.selectFlight();
+		sf.selectFlight();
 		if (!driver.getCurrentUrl().contains("http://newtours.demoaut.com/mercurypurchase.php"))
 			fail();
 	}
@@ -92,13 +96,11 @@ public class AppTest {
 	 */
 	@Test
 	public void stage_4_BookFlightTest() {
-
-		BookFlight.driver = driver;
-		BookFlight.enterFirstname("Yujie");
-		BookFlight.enterLastname("Cheng");
-		BookFlight.enterCreditNum("1234123412341234");
-		BookFlight.selectTickLess();
-		BookFlight.bookTicket();
+		bf.enterFirstname("Yujie");
+		bf.enterLastname("Cheng");
+		bf.enterCreditNum("1234123412341234");
+		bf.selectTickLess();
+		bf.bookTicket();
 		if (!driver.getCurrentUrl().contains("http://newtours.demoaut.com/mercurypurchase2.php"))
 			fail();
 

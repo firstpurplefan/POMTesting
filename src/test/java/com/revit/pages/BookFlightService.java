@@ -29,4 +29,6 @@ public interface BookFlightService {
 	 * This method will click on the buy flights button. 
 	 */
 	public void bookTicket();
+	
+	public void navigate();
 }

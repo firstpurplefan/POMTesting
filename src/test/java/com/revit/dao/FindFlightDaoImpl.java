@@ -43,5 +43,10 @@ public class FindFlightDaoImpl extends AbstractDao<FindFlight> implements FindFl
 		// TODO Auto-generated method stub
 		page.getFirstClassBox().click();
 	}
+	
+	public void navi()
+	{
+		this.navigate();
+	}
 
 }

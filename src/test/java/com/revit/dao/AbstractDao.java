@@ -14,10 +14,11 @@ public class AbstractDao<T> {
 	public AbstractDao(WebDriver browser, String url) {
 		this.pageModel = (Class<T>) ((ParameterizedType) this.getClass().getGenericSuperclass()).getActualTypeArguments()[1];
 		this.driver = browser;
+		this.url = url;
 		PageFactory.initElements(browser, pageModel);
 	}
 
-	public void Navigate() {
+	public void navigate() {
 		this.driver.navigate().to(this.url);
 	}
 	

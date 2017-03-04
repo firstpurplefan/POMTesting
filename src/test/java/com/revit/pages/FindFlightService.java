@@ -13,5 +13,7 @@ public interface FindFlightService {
 	public void findFlight();
 
 	public void selectFirstClass();
+	
+	public void navigate();
 
 }

@@ -29,4 +29,6 @@ public interface BookFlightDao {
 	 */
 	public void clickBookTicket();
 
+	public void navi();
+
 }

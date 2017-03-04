@@ -58,5 +58,10 @@ public class BookFlightServiceImpl implements BookFlightService {
 	public void bookTicket() {
 		dao.clickBookTicket();
 	}
+	
+	public void navigate()
+	{
+		dao.navi();
+	}
 
 }

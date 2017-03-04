@@ -28,5 +28,10 @@ public class HomePageDaoImpl extends AbstractDao<HomePage> implements HomePageDa
 		// TODO Auto-generated method stub
 		page.getLoginButton().click();
 	}
+	
+	public void navi()
+	{
+		this.navigate();
+	}
 
 }

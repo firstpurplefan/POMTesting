@@ -7,4 +7,6 @@ public interface HomePageService {
 	public void enterPassword(String password);
 
 	public void login();
+	
+	public void navigate();
 }

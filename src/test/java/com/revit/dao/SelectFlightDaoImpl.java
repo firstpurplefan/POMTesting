@@ -4,8 +4,8 @@ import org.openqa.selenium.WebDriver;
 
 import com.revit.model.SelectFlight;
 
-public class SelectFlightDaoImpl extends AbstractDao<SelectFlight> implements SelectFlightDao{
-	
+public class SelectFlightDaoImpl extends AbstractDao<SelectFlight> implements SelectFlightDao {
+
 	private SelectFlight page;
 
 	public SelectFlightDaoImpl(WebDriver browser, String url) {
@@ -17,7 +17,7 @@ public class SelectFlightDaoImpl extends AbstractDao<SelectFlight> implements Se
 	public void clickSelectFlight() {
 		// TODO Auto-generated method stub
 		page.getSelectFlightsButton().click();
-		
+
 	}
 
 	public String readFromPort() {
@@ -33,6 +33,10 @@ public class SelectFlightDaoImpl extends AbstractDao<SelectFlight> implements Se
 	public String readServClass() {
 		// TODO Auto-generated method stub
 		return page.getServClassValue().getAttribute("value");
+	}
+
+	public void navi() {
+		this.navigate();
 	}
 
 }

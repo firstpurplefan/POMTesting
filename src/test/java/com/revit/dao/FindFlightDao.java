@@ -12,4 +12,6 @@ public interface FindFlightDao {
 	public void clickFindFlight();
 
 	public void checkFirstClass();
+	
+	public void navi();
 }

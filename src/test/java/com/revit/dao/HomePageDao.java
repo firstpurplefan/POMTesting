@@ -7,4 +7,6 @@ public interface HomePageDao {
 
 	public void clickLogin();
 
+	public void navi();
+
 }

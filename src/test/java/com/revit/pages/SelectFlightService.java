@@ -8,4 +8,6 @@ public interface SelectFlightService {
 	public String getToPort();
 
 	public String getServClass();
+	
+	public void navigate();
 }
