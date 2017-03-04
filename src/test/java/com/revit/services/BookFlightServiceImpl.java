@@ -3,7 +3,7 @@
  * @author Yujie Cheng
  * This is a POM class for book flight page. 
  */
-package com.revit.pages;
+package com.revit.services;
 
 import org.openqa.selenium.WebDriver;
 

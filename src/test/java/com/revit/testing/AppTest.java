@@ -15,14 +15,14 @@ import org.junit.FixMethodOrder;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-import com.revit.pages.BookFlightService;
-import com.revit.pages.BookFlightServiceImpl;
-import com.revit.pages.FindFlightService;
-import com.revit.pages.FindFlightServiceImpl;
-import com.revit.pages.HomePageService;
-import com.revit.pages.HomePageServiceImpl;
-import com.revit.pages.SelectFlightService;
-import com.revit.pages.SelectFlightServiceImpl;
+import com.revit.services.BookFlightService;
+import com.revit.services.BookFlightServiceImpl;
+import com.revit.services.FindFlightService;
+import com.revit.services.FindFlightServiceImpl;
+import com.revit.services.HomePageService;
+import com.revit.services.HomePageServiceImpl;
+import com.revit.services.SelectFlightService;
+import com.revit.services.SelectFlightServiceImpl;
 
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
