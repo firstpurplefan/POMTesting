@@ -1,6 +1,7 @@
 package com.revit.dao;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.Select;
 
 import com.revit.model.FindFlight;
 
@@ -25,12 +26,12 @@ public class FindFlightDaoImpl extends AbstractDao<FindFlight> implements FindFl
 
 	public void passDeparting(String depFrom) {
 		// TODO Auto-generated method stub
-		page.getDepBox().sendKeys(depFrom);
+		new Select(page.getDepBox()).selectByVisibleText(depFrom);
 	}
 
 	public void passArrival(String arrTo) {
 		// TODO Auto-generated method stub
-		page.getArrBox().sendKeys(arrTo);
+		new Select(page.getArrBox()).selectByVisibleText(arrTo);
 	}
 
 	public void clickFindFlight() {

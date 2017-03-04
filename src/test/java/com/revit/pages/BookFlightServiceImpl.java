@@ -5,54 +5,58 @@
  */
 package com.revit.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.revit.model.BookFlight;
+import com.revit.dao.BookFlightDao;
+import com.revit.dao.BookFlightDaoImpl;
 
-public class BookFlightServiceImpl extends PageService<BookFlight> implements BookFlightService {
-	public BookFlightServiceImpl(WebDriver browser, String url) {
-		super(browser, url);
-	}
-
-	public static WebDriver driver;
+public class BookFlightServiceImpl implements BookFlightService {
+	private BookFlightDao dao;
 
 	/**
-	 * This method will enter the first name to the text box. 
+	 * This method will enter the first name to the text box.
+	 * 
 	 * @param firstName
+	 * @return
 	 */
+	public BookFlightServiceImpl(WebDriver driver) {
+		dao = new BookFlightDaoImpl(driver, "http://newtours.demoaut.com/mercurypurchase.php");
+	}
+
 	public void enterFirstname(String firstName) {
-		driver.findElement(By.name("passFirst0")).sendKeys(firstName);
+		dao.passFirstname(firstName);
 	}
 
 	/**
-	 * This method will enter the last name to the text box. 
+	 * This method will enter the last name to the text box.
+	 * 
 	 * @param lastName
 	 */
 	public void enterLastname(String lastName) {
-		driver.findElement(By.name("passLast0")).sendKeys(lastName);
+		dao.passLastname(lastName);
 	}
 
 	/**
-	 * This method will enter the credit card number to the text box. 
+	 * This method will enter the credit card number to the text box.
+	 * 
 	 * @param number
 	 */
 	public void enterCreditNum(String number) {
-		driver.findElement(By.name("creditnumber")).sendKeys(number);
+		dao.passCreditNum(number);
 	}
 
 	/**
-	 * This method will check the tickless box. 
+	 * This method will check the tickless box.
 	 */
 	public void selectTickLess() {
-		driver.findElement(By.name("ticketLess")).click();
+		dao.checkTickLess();
 	}
 
 	/**
-	 * This method will click on the buy flights button. 
+	 * This method will click on the buy flights button.
 	 */
 	public void bookTicket() {
-		driver.findElement(By.name("buyFlights")).click();
+		dao.clickBookTicket();
 	}
 
 }
